@@ -21,7 +21,8 @@ begin tran
 rollback
 if @@ERROR=0 select @@TRANCOUNT
 -- Q3
-select rank() over(order by c) ,
+select c,
+rank() over(order by c) ,
 ROW_NUMBER()  over(order by c),
 DENSE_RANK()  over(order by c)
 from(values(1),(1),(2),(2)) T(c)
